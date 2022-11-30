@@ -1,0 +1,22 @@
+<div fxLayout="row" fxLayoutAlign="start center" mat-dialog-title>
+
+    <h2 class="headline m-0" fxFlex="auto">
+       {{defaults.requestType}}
+    </h2>
+
+    <button class="text-secondary" mat-dialog-close mat-icon-button type="button">
+        <mat-icon [icIcon]="icClose"></mat-icon>
+    </button>
+</div>
+<mat-divider></mat-divider>
+<mat-dialog-content fxLayout="column">
+    <div class="flex flex-col sm:flex-row sm:mt-2">
+        <p *ngIf="defaults.requestType === 'Request Body'">{{defaults.requestBody}}</p>
+        <p *ngIf="defaults.requestType === 'Response Body'">{{defaults.responseBody}}</p>
+    </div>
+
+
+
+
+
+</mat-dialog-content>

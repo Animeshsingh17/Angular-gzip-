@@ -1,0 +1,53 @@
+export class AppConsts {
+    static readonly authlogin = 'signin';
+    static readonly fetchUserInformation = "fetchUserInformation?userId=";
+    static readonly fetchAllUser = 'fetchAllUser';
+    static readonly updateUserInformation = 'updateUserInformation';
+    static readonly downloadAllActivityAfterParticularDate = 'downloadAllActivityAfterParticularDate';
+    static readonly fetchAllUserConnectionPendingList = 'fetchAllUserConnectionPendingList';
+    static readonly fetchAllActivityAfterParticularDate = 'fetchAllActivityAfterParticularDate';
+    static readonly fetchUserConnectionInformation = 'fetchUserConnectionInformation';
+    static readonly fetchUserCurrentLocation = 'fetchUserCurrentLocation?userId=';
+    static readonly fetchAllUserWithCriteria = 'fetchAllUserWithCriteria';
+    static readonly deleteUserConnectionInformation = 'deleteUserConnectionInformation';
+    static readonly addUserConnectionInformation = 'addUserConnectionInformation';
+    static readonly fetchAllInvitationNotSignup = 'fetchAllInvitationNotSignup';
+    static readonly userSignupNotLogin = 'userSignupNotLogin';
+    static readonly setUserStatus = 'setUserStatus';
+    static readonly sendNotificationByTopic = 'notification/topic';
+    static readonly sendNotificationByTopicWithImage = 'notification/topicWithImage';
+    static readonly applicationProperties = 'applicationProperties';
+    static readonly changePassword = 'changePassword';
+    static readonly updateApplicationProperties = 'updateApplicationProperties';
+    static readonly fetchAllNotificationAfterParticularDate = 'notification/fetchAllNotificationAfterParticularDate';
+    static readonly fetchGroupList = 'fetchAllGroups';
+    static readonly createGroup = 'createGroup';
+    static readonly updateGroup = 'updateGroup';
+    static readonly createGroupConnection = 'createGroupConnection';
+    static readonly updateStatusForGroupConnection = 'updateStatusForGroupConnection';
+    static readonly saveOrUpdateInterest = 'saveOrUpdateInterest';
+    static readonly fetchAllCategory = 'fetchAllCategory';
+    static readonly deleteCategory = 'deleteCategory';
+    static readonly modifyCategory = 'modifyCategory';
+    static readonly fetchAllInterest = 'fetchAllInterest';
+    static readonly deleteInterest = 'deleteInterest';
+    static readonly addUserInterest = "addUserInterest";
+    static readonly fetchUserInterset = "fetchUserinterestCategory";
+    static readonly deleteUserInterest = "deleteUserInterest";
+    static readonly fetchTempRegistration = "fetchTempRegistration";
+    static readonly fetchGroupInformation = 'fetchGroupInformation';
+    static readonly fetchGroupConnectionlist = 'fetchGroupConnectionlist';
+    static readonly uploadGroupCoverImage = 'uploadGroupCoverImage';
+    static readonly deleteGroup = 'deleteGroup';
+    static readonly changeUserSetting = 'changeUserSetting';
+    static readonly fetchSponsoredMemberCount = 'fetchSponsoredMemberCount?userId=';
+    static readonly logoutFromDevice = 'logoutFromDevice?userId=';
+    static readonly fetchUserActivityUniqueAfterParticularDate = 'fetchUserActivityUniqueAfterParticularDate';
+    static readonly userInteractionWithCurrLocation = 'userInteractionWithCurrLocation';
+    static readonly getAllUserRecommendList = 'getAllUserRecommendList';
+    static readonly updateUserRecommendStatus="updateUserRecommendStatus";
+    static readonly userEmailChange="changeUserEmail";
+    static readonly deleteUser = 'deleteUser?userId=';
+}
+
+

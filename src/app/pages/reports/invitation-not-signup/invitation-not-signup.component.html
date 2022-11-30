@@ -1,0 +1,71 @@
+<vex-secondary-toolbar current="Report">
+    <vex-breadcrumbs [crumbs]="['Report', 'User invited but not signup']" class="flex-auto"></vex-breadcrumbs>
+
+    <!-- <button class="ml-2" color="primary" mat-icon-button type="button">
+    <mat-icon [icIcon]="icMoreVert"></mat-icon>
+</button> -->
+</vex-secondary-toolbar>
+<vex-page-layout @stagger>
+    <vex-page-layout-content class="-mt-16">
+        <div class="card overflow-auto mt-16 pb-12">
+            <div class="bg-app-bar px-6 h-16 border-b sticky left-0" fxLayout="row" fxLayoutAlign="start center">
+                <div class="bg-card rounded-full border px-4" fxFlex="400px" fxFlex.lt-md="auto" fxLayout="row" fxLayoutAlign="start center">
+                    <ic-icon [icIcon]="icSearch" size="20px"></ic-icon>
+                    <input [formControl]="searchCtrl" class="px-4 py-3 border-0 outline-none w-full bg-transparent" placeholder="Search..." type="search" name="search">
+                </div>
+                <span fxFlex></span>
+                <!-- <button (click)="refresh()" class="" fxFlex="none" mat-icon-button matTooltip="Filter Columns" type="button">
+                    <mat-icon [icIcon]="baselineRefresh"></mat-icon>
+                </button>
+                <button mat-button (click)="exportToExcel()">
+                    <mat-icon [icIcon]="fileExcel"></mat-icon>
+                </button> -->
+                <button [matMenuTriggerFor]="columnFilterMenuDate" class="" fxFlex="none" mat-icon-button matTooltip="Filter Columns" type="button">
+                    <mat-icon [icIcon]="icFilterList"></mat-icon>
+                </button>
+                <button [matMenuTriggerFor]="settingsMenu" class="text-secondary" mat-icon-button type="button">
+                    <mat-icon [icIcon]="icMoreVert"></mat-icon>
+                </button>
+            </div>
+            <table @stagger [dataSource]="dataSource" class="w-full" mat-table matSort>
+                <ng-container *ngFor="let column of columns; trackBy: trackByProperty">
+                    <ng-container *ngIf="column.type === 'text'" [matColumnDef]="column.property">
+                        <th *matHeaderCellDef class="uppercase" mat-header-cell mat-sort-header> {{ column.label }}
+                        </th>
+                        <td *matCellDef="let row" [ngClass]="column.cssClasses" mat-cell>{{ row[column.property] }}</td>
+                    </ng-container>
+                </ng-container>
+
+                <tr *matHeaderRowDef="visibleColumns" mat-header-row></tr>
+                <tr *matRowDef="let row; columns: visibleColumns;" @fadeInUp class="hover:bg-hover trans-ease-out cursor-pointer" mat-row>
+
+                </tr>
+            </table>
+            <div *ngIf="!(dataSource.data.length > 0)" class="no-records">
+                No records found
+            </div>
+            <mat-paginator [pageSizeOptions]="pageSizeOptions" [pageSize]="pageSize" class="sticky left-0">
+            </mat-paginator>
+        </div>
+    </vex-page-layout-content>
+</vex-page-layout>
+
+<mat-menu #columnFilterMenuDate="matMenu" xPosition="before" yPosition="below">
+    <button (click)="toggleColumnVisibility(column, $event)" *ngFor="let column of columns" class="checkbox-item mat-menu-item">
+    <mat-checkbox (click)="$event.stopPropagation()" [(ngModel)]="column.visible" color="primary">
+        {{ column.label }}
+    </mat-checkbox>
+</button>
+</mat-menu>
+<mat-menu #settingsMenu="matMenu" xPosition="before" yPosition="below">
+    <ng-template matMenuContent>
+        <button  (click)="refresh()"  mat-menu-item>
+            <mat-icon [icIcon]="baselineRefresh"></mat-icon>
+            <span>Refresh</span>
+        </button>
+        <button (click)="exportToExcel()" mat-menu-item>
+            <mat-icon [icIcon]="fileExcel"></mat-icon>
+            <span>Export to excel</span>
+        </button>
+    </ng-template>
+</mat-menu>

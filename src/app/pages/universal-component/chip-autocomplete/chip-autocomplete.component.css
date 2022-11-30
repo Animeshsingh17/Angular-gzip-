@@ -1,0 +1,37 @@
+.form {
+    min-width: 150px;
+    width: 100%;
+}
+
+.form-element {
+    width: 100%;
+}
+
+.mat-option.option-checkbox-wrap {
+    padding: 0;
+}
+
+.mat-option.option-checkbox-wrap .mat-checkbox {
+    padding: 0 16px;
+}
+
+.mat-option-text {
+    white-space: normal;
+}
+
+.mat-standard-chip {
+    height: auto
+}
+
+.item {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    white-space: nowrap;
+    line-height: 45px;
+    height: 45px;
+    padding: 0 0px;
+    text-align: left;
+    max-width: 100%;
+    box-sizing: border-box;
+}

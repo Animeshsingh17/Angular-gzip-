@@ -1,0 +1,40 @@
+<form (ngSubmit)="save()" [formGroup]="form">
+    <div fxLayout="row" fxLayoutAlign="start center" mat-dialog-title>
+        <h2 *ngIf="isUpdateMode()" class="headline m-0" fxFlex="auto">Add Interest to {{defaults.interestCategory}} category</h2>
+        <h2 *ngIf="isCreateMode()" class="headline m-0" fxFlex="auto">Add Interest</h2>
+        <span fxFlex></span>
+        <button class="text-secondary" mat-dialog-close mat-icon-button type="button">
+          <mat-icon [icIcon]="icClose"></mat-icon>
+      </button>
+    </div>
+
+    <mat-divider class="-mx-6 text-border"></mat-divider>
+
+    <mat-dialog-content fxLayout="column">
+        <div class="flex flex-col sm:flex-row sm:mt-2">
+            <chip-autocomplete [isDisable]="isDisable" [isDisableInput]="isDisable" formControlName="categoryList" fxFlex="auto" placeholder="Category" clientSideFilter="true" [options]="categoryList" removable="true" isChipAddFromInput="true" required="true" displayWith="interestCategory"
+                itemId="interestCategoryId" isOptionCheckable="true" disabledSelected="true">
+            </chip-autocomplete>
+        </div>
+
+        <div class="flex flex-col sm:flex-row">
+
+            <chip-autocomplete formControlName="interestList" fxFlex="auto" placeholder="Interests" clientSideFilter="true" [options]="[]" removable="true" isChipAddFromInput="true" required="true" displayWith="interestName" itemId="interestId" isOptionCheckable="true"
+                disabledSelected="true">
+            </chip-autocomplete>
+        </div>
+        <div *ngIf="isUpdateMode()" class="flex flex-col sm:flex-row">
+
+            <chip-autocomplete [isDisable]="isDisable" [isDisableInput]="isDisable" formControlName="prevInterestList" fxFlex="auto" placeholder="Previous Interests" clientSideFilter="true" [options]="[]" removable="true" isChipAddFromInput="true" required="true"
+                displayWith="interestName" itemId="interestId" isOptionCheckable="true" disabledSelected="true">
+            </chip-autocomplete>
+        </div>
+
+    </mat-dialog-content>
+
+    <mat-dialog-actions align="end">
+        <button mat-button mat-dialog-close type="button">CANCEL</button>
+        <button *ngIf="isCreateMode()" [disabled]="!form.valid" color="primary" mat-button type="submit">CREATE</button>
+        <button *ngIf="isUpdateMode()" [disabled]="!form.valid" color="primary" mat-button type="submit">ADD</button>
+    </mat-dialog-actions>
+</form>

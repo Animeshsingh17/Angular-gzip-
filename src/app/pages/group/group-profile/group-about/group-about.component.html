@@ -1,0 +1,107 @@
+<div class="mt-6 flex flex-col md:flex-row md:items-start">
+    <div class="flex-auto">
+        <div class="card">
+
+            <div class="border-b py-4 px-6" fxLayout="row" fxLayoutAlign="start center">
+                <h2 class="m-0 title" fxFlex="auto">About</h2>
+                <!-- <button [matMenuTriggerFor]="settingsMenu" *ngIf="!group.lastSignin" class="text-secondary" mat-icon-button type="button">
+                    <mat-icon [icIcon]="icMoreVert"></mat-icon>
+                </button> -->
+            </div>
+            <div class="px-gutter py-4" gdColumns="1fr 1fr" gdColumns.xs="1fr" gdGap="16px">
+                <div class="py-3" fxLayout="row" fxLayoutAlign="start center">
+                    <div @scaleIn class="w-10 h-10 rounded-full bg-primary-light text-primary ltr:mr-3 rtl:ml-3 flex items-center justify-center">
+                        <ic-icon [icon]="twotoneGroups" size="20px"></ic-icon>
+                    </div>
+
+                    <div @fadeInRight>
+                        <p class="m-0 body-1">{{group.name}}</p>
+                        <p class="m-0 caption text-hint">Circle Name</p>
+                    </div>
+                </div>
+                <div class="py-3" fxLayout="row" fxLayoutAlign="start center">
+                    <div @scaleIn class="w-10 h-10 rounded-full bg-primary-light text-primary ltr:mr-3 rtl:ml-3 flex items-center justify-center">
+                        <ic-icon [icon]="baselineEmojiObjects" size="20px"></ic-icon>
+                    </div>
+
+                    <div @fadeInRight>
+                        <p class="m-0 body-1">{{group.groupId}}</p>
+                        <p class="m-0 caption text-hint">Circle ID</p>
+                    </div>
+                </div>
+                <div class="py-3" fxLayout="row" fxLayoutAlign="start center">
+                    <div @scaleIn class="w-10 h-10 rounded-full bg-primary-light text-primary ltr:mr-3 rtl:ml-3 flex items-center justify-center">
+                        <ic-icon [icon]="baselinePerson" size="20px"></ic-icon>
+                    </div>
+
+                    <div @fadeInRight>
+                        <p class="m-0 body-1">{{group.creatorName}}</p>
+                        <p class="m-0 caption text-hint">Circle Owner Name</p>
+                    </div>
+                </div>
+
+               
+               
+                
+                <div class="py-3" fxLayout="row" fxLayoutAlign="start center">
+                    <div @scaleIn class="w-10 h-10 rounded-full bg-primary-light text-primary ltr:mr-3 rtl:ml-3 flex items-center justify-center">
+                        <ic-icon [icon]="baselineEmojiObjects" size="20px"></ic-icon>
+                    </div>
+
+                    <div @fadeInRight>
+                        <p class="m-0 body-1">{{group.groupOwnerId}}</p>
+                        <p class="m-0 caption text-hint">Circle Owner ID</p>
+                    </div>
+                </div>
+                
+
+           
+            </div>
+            <div class="px-gutter py-4" gdColumns="1fr" gdColumns.xs="1fr" gdGap="16px">
+                <div fxLayout="row" fxLayoutAlign="start center">
+                    <div @scaleIn class="w-10 h-10 rounded-full bg-primary-light text-primary ltr:mr-3 rtl:ml-3 flex items-center justify-center">
+                        <ic-icon [icon]="twotoneReceipt" size="20px"></ic-icon>
+                    </div>
+
+                    <div @fadeInRight>
+                        <p class="m-0 body-1">{{group.summary}}</p>
+                        <p class="m-0 caption text-hint">Summary</p>
+                    </div>
+                </div>
+            </div>
+            <div class="px-gutter py-4" gdColumns="1fr" gdColumns.xs="1fr" gdGap="16px">
+                <div fxLayout="row" fxLayoutAlign="start center">
+                    <div @scaleIn class="w-10 h-10 rounded-full bg-primary-light text-primary ltr:mr-3 rtl:ml-3 flex items-center justify-center">
+                        <ic-icon [icon]="outlineDoubleArrow" size="20px"></ic-icon>
+                    </div>
+
+                    <div @fadeInRight>
+                        <p class="m-0 body-1">{{group.tags}}</p>
+                        <p class="m-0 caption text-hint">Tags</p>
+                    </div>
+                </div>
+            </div>
+            
+        </div>
+        <div class="card mt-6">
+            <div class="px-gutter py-4 border-b">
+                <h2 class="title m-0">Member List</h2>
+            </div>
+            <div @stagger class="px-6 py-4" fxLayout="column" fxLayoutGap="16px">
+                <div  fxFlex fxLayout="row" fxLayoutAlign="start">
+                    <img *ngFor="let user of group.memberList"
+                        [matTooltip]="user.name"
+                        [src]="user.userPhotoUrl?user.userPhotoUrl:'assets/img/demo/user.png'"
+                        class="avatar overlapping">
+                </div>
+            </div>
+        </div>
+        
+    </div>
+</div>
+
+<mat-menu #settingsMenu="matMenu" xPosition="before" yPosition="below">
+    <ng-template let-group="group" matMenuContent>
+        
+    </ng-template>
+</mat-menu>

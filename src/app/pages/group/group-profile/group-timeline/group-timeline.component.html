@@ -1,0 +1,38 @@
+<div class="mt-6 flex flex-col md:flex-row md:items-start">
+    <div class="flex-auto">
+            <div @fadeInUp class="card mt-6">
+                <div (click)="textarea.focus()" class="bg-white rounded-t p-6">
+                <textarea #textarea
+                            cdkTextareaAutosize
+                            class="w-full textarea-clean bg-white"
+                            placeholder="Share your thoughts..."></textarea>
+                </div>
+
+                <div class="bg-app-bar flex">
+                <span class="flex-1"></span>
+
+                <button class="text-secondary uppercase font-medium bg-primary text-primary-contrast rounded-none ltr:rounded-br rtl:rounded-bl"
+                        mat-button
+                        type="button">
+                    <span>POST</span>
+                    <ic-icon [icIcon]="icKeyboardArrowRight"
+                            [inline]="true"
+                            class="ltr:-mr-1 rtl:-ml-1 ltr:ml-2 rtl:mr-2"
+                            size="20px"></ic-icon>
+                </button>
+                </div>
+                
+        </div>
+        <div class="grid grid-cols-3">
+            <div *ngFor="let post of groupPostList">
+              <div @fadeInUp class="card mt-6 ml-3">
+                <vex-profile-timeline-entry avatarUrl="{{post.userPhotoCompressURL ? post.userPhotoCompressURL : post.userPhotoURL}}"
+                                            [data]="post"
+                                            >
+                  <p class="px-gutter pt-1 pb-4">{{post.post}}</p>
+                </vex-profile-timeline-entry>
+              </div>
+            </div>
+          </div>
+    </div>
+</div>

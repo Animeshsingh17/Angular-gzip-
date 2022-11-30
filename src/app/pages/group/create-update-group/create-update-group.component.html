@@ -1,0 +1,72 @@
+<form (ngSubmit)="save()" [formGroup]="form">
+    <div fxLayout="row" fxLayoutAlign="start center" mat-dialog-title>
+        <img *ngIf="form.get('coverPhotoUrl').value" [src]="form.get('coverPhotoUrl').value" class="avatar mr-5">
+        <h2 *ngIf="form.get('name').value" class="headline m-0" fxFlex="auto">
+            {{ form.get('name').value}}</h2>
+        <h2 *ngIf="!form.get('name').value" class="headline m-0" fxFlex="auto">Create Circle</h2>
+
+        <button class="text-secondary" mat-dialog-close mat-icon-button type="button">
+            <mat-icon [icIcon]="icClose"></mat-icon>
+        </button>
+    </div>
+
+    <mat-divider class="-mx-6 text-border"></mat-divider>
+    <mat-dialog-content fxLayout="column">
+        <div class="flex flex-col sm:flex-row sm:mt-2">
+            <mat-form-field class="flex-auto mr-2" *ngIf="mode ==='create'">
+                <mat-label>Circle Owner</mat-label>
+                <input matInput placeholder="Search" name="search" aria-label="State" [matAutocomplete]="auto" formControlName="groupOwnerId" required>
+                <mat-autocomplete md-input-minlength="2" md-input-maxlength="18" #auto="matAutocomplete" [displayWith]="displayFunction">
+                    <mat-option *ngIf="isLoading" class="is-loading">Loading...</mat-option>
+                    <ng-container *ngIf="!isLoading">
+                        <mat-option *ngFor="let user of userList" [value]="user">
+                            <div class="item">
+                                <img [src]="user.userPhotoURL?user.userPhotoURL:'assets/img/demo/user.png'" class="avatar">
+                                <span>  {{user.firstName}} {{user.lastName}}</span>
+                            </div>
+                        </mat-option>
+                    </ng-container>
+                </mat-autocomplete>
+                <!-- <input formControlName="street" matInput required> -->
+
+                <mat-icon [icIcon]="icPerson" class="mr-3" matPrefix></mat-icon>
+            </mat-form-field>
+
+
+            <mat-form-field class="flex-auto">
+                <mat-label>Name</mat-label>
+                <input matInput required formControlName="name" name="name">
+            </mat-form-field>
+        </div>
+        <div class="flex flex-col sm:flex-row sm:mt-2">
+            <mat-form-field fxFlex="auto">
+                <textarea matInput rows="2" formControlName="summary" name="summary" placeholder="Summary"></textarea>
+            </mat-form-field>
+        </div>
+        <div class="flex flex-col sm:flex-row sm:mt-2">
+            <chip-autocomplete fxFlex="auto" formControlName="tags" placeholder="Tags" clientSideFilter="true" removable="true" [options]="[]" removable="true" isChipAddFromInput="true" required="false" displayWith="name" itemId="_key" isOptionCheckable="true" disabledSelected="true"
+                name="tags">
+            </chip-autocomplete>
+        </div>
+        <div class="flex flex-col sm:flex-row">
+            <mat-radio-group formControlName="memberType" class="flex flex-col sm:flex-row sm:mt-2 mb-3">
+                <mat-radio-button class="flex-auto" color="primary" value="LC">Lunch Circle</mat-radio-button>
+                <mat-radio-button class="flex-auto ml-6" color="primary" value="DC">Director Club</mat-radio-button>
+            </mat-radio-group>
+        </div>
+
+        <div class="flex flex-col sm:flex-row">
+            <mat-checkbox *ngIf="form.get('memberType').value === 'LC'" formControlName="isVisibleToDCMember" color="primary" class="flex-auto">Is visible to DC member</mat-checkbox>
+        </div>
+        <div class="flex flex-col sm:flex-row sm:mt-2">
+            <mat-checkbox class="flex-auto" formControlName="isSponsored" color="primary">Is Sponsored</mat-checkbox>
+            <mat-checkbox *ngIf="!form.get('isSponsored').value" class="flex-auto" formControlName="isPrivate" color="primary">Is Private</mat-checkbox>
+            <mat-checkbox *ngIf="form.get('isPrivate').value && !form.get('isSponsored').value" class="flex-auto ml-2" formControlName="isVisible" color="primary">Is Hidden</mat-checkbox>
+        </div>
+    </mat-dialog-content>
+    <mat-dialog-actions align="end">
+        <button mat-button mat-dialog-close type="button">CANCEL</button>
+        <button *ngIf="isCreateMode()" [disabled]="!form.valid" color="primary" mat-button type="submit">CREATE</button>
+        <button *ngIf="isUpdateMode()" [disabled]="!form.valid" color="primary" mat-button type="submit">UPDATE</button>
+    </mat-dialog-actions>
+</form>

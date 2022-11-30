@@ -1,0 +1,257 @@
+<div class="mt-6 flex flex-col md:flex-row md:items-start">
+    <div class="flex-auto">
+        <div class="card">
+
+            <div class="border-b py-4 px-6" fxLayout="row" fxLayoutAlign="start center">
+                <h2 class="m-0 title" fxFlex="auto">About</h2>
+                <button [matMenuTriggerFor]="settingsMenu" class="text-secondary" mat-icon-button type="button">
+                    <mat-icon [icIcon]="icMoreVert"></mat-icon>
+                </button>
+            </div>
+
+            <div class="px-gutter py-4" gdColumns="1fr 1fr" gdColumns.xs="1fr" gdGap="16px">
+                <div class="py-3" fxLayout="row" fxLayoutAlign="start center">
+                    <div @scaleIn class="w-10 h-10 rounded-full bg-primary-light text-primary ltr:mr-3 rtl:ml-3 flex items-center justify-center">
+                        <ic-icon [icon]="icPhone" size="20px"></ic-icon>
+                    </div>
+
+                    <div @fadeInRight>
+                        <p class="m-0 body-1">{{user.mobileNumber}}</p>
+                        <p class="m-0 caption text-hint">Phone Number</p>
+                    </div>
+                </div>
+
+                <div class="py-3" fxLayout="row" fxLayoutAlign="start center">
+                    <div @scaleIn class="w-10 h-10 rounded-full bg-primary-light text-primary ltr:mr-3 rtl:ml-3 flex items-center justify-center">
+                        <ic-icon [icon]="icWork" size="20px"></ic-icon>
+                    </div>
+
+                    <div @fadeInRight>
+                        <p class="m-0 body-1">{{user.email}}</p>
+                        <p class="m-0 caption text-hint">User Name</p>
+                    </div>
+                </div>
+
+                <div class="py-3" fxLayout="row" fxLayoutAlign="start center">
+                    <div @scaleIn class="w-10 h-10 rounded-full bg-primary-light text-primary ltr:mr-3 rtl:ml-3 flex items-center justify-center">
+                        <ic-icon [icon]="icMail" size="20px"></ic-icon>
+                    </div>
+
+                    <div @fadeInRight>
+                        <p class="m-0 body-1">{{user.email}}</p>
+                        <p class="m-0 caption text-hint">Email Address</p>
+                    </div>
+                </div>
+
+                <div class="py-3" fxLayout="row" fxLayoutAlign="start center">
+                    <div @scaleIn class="w-10 h-10 rounded-full bg-primary-light text-primary ltr:mr-3 rtl:ml-3 flex items-center justify-center">
+                        <ic-icon [icon]="icAccessTime" size="20px"></ic-icon>
+                    </div>
+
+                    <div @fadeInRight>
+                        <p class="m-0 body-1">{{user.companyName}}</p>
+                        <p class="m-0 caption text-hint">Company Name</p>
+                    </div>
+                </div>
+                <div class="py-3" fxLayout="row" fxLayoutAlign="start center">
+                    <div @scaleIn class="w-10 h-10 rounded-full bg-primary-light text-primary ltr:mr-3 rtl:ml-3 flex items-center justify-center">
+                        <ic-icon [icon]="twotoneMap" size="20px"></ic-icon>
+                    </div>
+
+                    <div @fadeInRight>
+                        <p class="m-0 body-1">{{user.homeLocation}}</p>
+                        <p class="m-0 caption text-hint">Home Location</p>
+                    </div>
+                </div>
+
+                <div class="py-3" fxLayout="row" fxLayoutAlign="start center">
+                    <div @scaleIn class="w-10 h-10 rounded-full bg-primary-light text-primary ltr:mr-3 rtl:ml-3 flex items-center justify-center">
+                        <ic-icon [icon]="baselineEmojiObjects" size="20px"></ic-icon>
+                    </div>
+
+                    <div @fadeInRight>
+                        <p class="m-0 body-1">{{user.userId}}</p>
+                        <p class="m-0 caption text-hint">User ID</p>
+                    </div>
+                </div>
+                <div class="py-3" fxLayout="row" fxLayoutAlign="start center">
+                    <div @scaleIn class="w-10 h-10 rounded-full bg-primary-light text-primary ltr:mr-3 rtl:ml-3 flex items-center justify-center">
+                        <ic-icon [icon]="baselineEmojiObjects" size="20px"></ic-icon>
+                    </div>
+
+                    <div @fadeInRight>
+                        <p *ngIf="user.ioStreamToken" class="m-0 body-1 w-gutter w-full">Available</p>
+                        <p *ngIf="!user.ioStreamToken" class="m-0 body-1 w-gutter w-full">Unavailable</p>
+                        <p class="m-0 caption text-hint">IO Stream Token</p>
+                    </div>
+                </div>
+                <div class="py-3" fxLayout="row" fxLayoutAlign="start center">
+                    <div @scaleIn class="w-10 h-10 rounded-full bg-primary-light text-primary ltr:mr-3 rtl:ml-3 flex items-center justify-center">
+                        <ic-icon [icon]="baselineEmojiObjects" size="20px"></ic-icon>
+                    </div>
+
+                    <div @fadeInRight>
+                        <p class="m-0 body-1">{{user.userPermission}}</p>
+                        <p class="m-0 caption text-hint">User Membership</p>
+                    </div>
+                </div>
+
+                <div class="py-3" fxLayout="row" fxLayoutAlign="start center">
+                    <div @scaleIn class="w-10 h-10 rounded-full bg-primary-light text-primary ltr:mr-3 rtl:ml-3 flex items-center justify-center">
+                        <ic-icon [icon]="roundDone" size="20px"></ic-icon>
+                    </div>
+
+                    <div @fadeInRight>
+                        <p class="m-0 body-1">{{user.isPromoted}}</p>
+                        <p class="m-0 caption text-hint">Is Promoted</p>
+
+                    </div>
+                </div>
+                <div class="py-3" fxLayout="row" fxLayoutAlign="start center">
+                    <div @scaleIn class="w-10 h-10 rounded-full bg-primary-light text-primary ltr:mr-3 rtl:ml-3 flex items-center justify-center">
+                        <ic-icon [icon]="baselinePersonAddAlt1" size="20px"></ic-icon>
+                    </div>
+
+                    <div @fadeInRight>
+                        <p class="m-0 body-1">{{sponsoredCount}}</p>
+                        <p class="m-0 caption text-hint">Sponsored User Count</p>
+
+                    </div>
+                </div>
+
+
+                <!-- <div class="py-3" fxLayout="row" fxLayoutAlign="start center">
+                    <div @scaleIn class="w-10 h-10 rounded-full bg-primary-light text-primary ltr:mr-3 rtl:ml-3 flex items-center justify-center">
+                        <ic-icon [icon]="baselineEmojiObjects" size="20px"></ic-icon>
+                    </div>
+
+                    <div @fadeInRight>
+                        <p class="m-0 body-1 w-gutter">{{user.ioStreamToken}}</p>
+                        <p class="m-0 caption text-hint">IO Stream Token</p>
+                    </div>
+                </div> -->
+
+            </div>
+
+
+        </div>
+        <div class="card mt-6">
+            <div class="px-gutter py-4 border-b">
+                <h2 class="title m-0">Current Location</h2>
+            </div>
+            <div class="px-gutter py-4" gdColumns="1fr" gdColumns.xs="1fr" gdGap="16px">
+                <div class="py-3" fxLayout="row" fxLayoutAlign="start center">
+                    <div @scaleIn class="w-10 h-10 rounded-full bg-primary-light text-primary ltr:mr-3 rtl:ml-3 flex items-center justify-center">
+                        <ic-icon [icon]="twotoneMap" size="20px"></ic-icon>
+                    </div>
+
+                    <div @fadeInRight>
+                        <p class="m-0 body-1">{{userLocation.currentLocation}}</p>
+                        <p class="m-0 caption text-hint">Location</p>
+                    </div>
+                </div>
+            </div>
+            <div class="px-gutter py-4" gdColumns="1fr 1fr" gdColumns.xs="1fr" gdGap="16px">
+                <div class="py-3" fxLayout="row" fxLayoutAlign="start center">
+                    <div @scaleIn class="w-10 h-10 rounded-full bg-primary-light text-primary ltr:mr-3 rtl:ml-3 flex items-center justify-center">
+                        <ic-icon [icon]="baselinePlace" size="20px"></ic-icon>
+                    </div>
+
+                    <div @fadeInRight>
+                        <p class="m-0 body-1">{{userLocation.latitude}}</p>
+                        <p class="m-0 caption text-hint">Latitude</p>
+                    </div>
+                </div>
+                <div class="py-3" fxLayout="row" fxLayoutAlign="start center">
+                    <div @scaleIn class="w-10 h-10 rounded-full bg-primary-light text-primary ltr:mr-3 rtl:ml-3 flex items-center justify-center">
+                        <ic-icon [icon]="baselinePlace" size="20px"></ic-icon>
+                    </div>
+
+                    <div @fadeInRight>
+                        <p class="m-0 body-1">{{userLocation.longitude}}</p>
+                        <p class="m-0 caption text-hint">Longitude</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="card mt-6">
+            <div class="px-gutter py-4 border-b">
+                <h2 class="title m-0">Activity</h2>
+            </div>
+            <div class="px-gutter py-4" gdColumns="1fr 1fr" gdColumns.xs="1fr" gdGap="16px">
+                <div class="py-3" fxLayout="row" fxLayoutAlign="start center">
+                    <div @scaleIn class="w-10 h-10 rounded-full bg-primary-light text-primary ltr:mr-3 rtl:ml-3 flex items-center justify-center">
+                        <ic-icon [icon]="baselinePlace" size="20px"></ic-icon>
+                    </div>
+
+                    <div @fadeInRight>
+                        <p class="m-0 body-1" *ngIf="user.lastSignin">{{ user.lastSignin }}</p>
+                        <p class="m-0 caption text-hint">Last Signin</p>
+                    </div>
+                </div>
+                <div class="py-3" fxLayout="row" fxLayoutAlign="start center">
+                    <div @scaleIn class="w-10 h-10 rounded-full bg-primary-light text-primary ltr:mr-3 rtl:ml-3 flex items-center justify-center">
+                        <ic-icon [icon]="baselinePlace" size="20px"></ic-icon>
+                    </div>
+
+                    <div @fadeInRight>
+                        <p class="m-0 body-1" *ngIf="user.lastActivity">{{user.lastActivity}}</p>
+                        <p class="m-0 caption text-hint">Last Activity</p>
+                    </div>
+                </div>
+                <div class="py-3" fxLayout="row" fxLayoutAlign="start center">
+                    <div @scaleIn class="w-10 h-10 rounded-full bg-primary-light text-primary ltr:mr-3 rtl:ml-3 flex items-center justify-center">
+                        <ic-icon [icon]="baselineLock" size="20px"></ic-icon>
+                    </div>
+
+                    <div @fadeInRight>
+                        <p class="m-0 body-1" *ngIf="user.passwordModifiedDate">{{user.passwordModifiedDate}}</p>
+                        <p class="m-0 caption text-hint">Last Password Change</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="card max-w-unset md:max-w-xs w-full flex-none md:ltr:ml-6 md:rtl:mr-6 mt-6 md:mt-0">
+        <div class="px-6 py-4 border-b">
+            <h2 class="title m-0">Connection Information</h2>
+        </div>
+
+        <div @stagger class="px-6 py-4" fxLayout="column" fxLayoutGap="16px">
+            <div *ngFor="let friend of (friendList?friendList.slice(0,5):friendList);" fxLayout="row" fxLayoutAlign="start center">
+                <img @scaleIn [src]="friend.userPhotoUrl?friend.userPhotoUrl:'assets/img/demo/user.png'" alt="Profile Picture" class="avatar ltr:mr-3 rtl:ml-3" fxFlex="none" />
+                <div @fadeInRight fxFlex="auto">
+                    <h4 class="body-2 m-0 leading-snug">{{ friend.firstName | titlecase }} {{ friend.lastName | titlecase}}
+                    </h4>
+                    <h5 class="text-secondary m-0 caption leading-none">{{ friend.numberOfConnection }} friends</h5>
+                </div>
+                <button color="primary" mat-icon-button type="button">
+                    <mat-icon [icIcon]="icCheck"></mat-icon>
+                </button>
+            </div>
+        </div>
+        <div class="px-6 py-4 border-b" *ngIf="loadinFriendListFlag">
+            <h4 class="text-secondary m-0 caption leading-none text-center">Loading</h4>
+        </div>
+        <div class="px-6 py-4 border-b" *ngIf="friendList.length>4">
+            <h4 class="text-secondary m-0 caption leading-none">+ {{friendList.length-5}} more friend</h4>
+        </div>
+    </div>
+</div>
+
+<mat-menu #settingsMenu="matMenu" xPosition="before" yPosition="below">
+    <ng-template matMenuContent>
+        <button (click)="changeUserPassword()" mat-menu-item>
+            <mat-icon [icIcon]="icPasswordChange"></mat-icon>
+            <span>Change password</span>
+        </button>
+        <button (click)="changeUserEmail()" mat-menu-item>
+            <mat-icon [icIcon]="icMail"></mat-icon>
+            <span>Change Email</span>
+        </button>
+        <button (click)="permission()" mat-menu-item>
+            <mat-icon [icIcon]="baselineSettings"></mat-icon>
+            <span>Member Setting</span>
+        </button>
+    </ng-template>
+</mat-menu>

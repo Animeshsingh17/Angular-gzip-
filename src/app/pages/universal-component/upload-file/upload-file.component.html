@@ -1,0 +1,17 @@
+
+<div mat-dialog-title fxLayout="row" fxLayoutAlign="space-between center">
+    <div>Upload File</div>
+    <button type="button" mat-icon-button (click)="close('No answer')" tabindex="-1">
+        <mat-icon [icIcon]="icClose"></mat-icon>
+    </button>
+</div>
+
+<mat-dialog-content>
+    <input type="file" name="files" accept="image/*" (change)="onFileChanged($event)">
+</mat-dialog-content>
+
+
+<mat-dialog-actions align="end">
+    <button mat-button (click)="close('No')">NO</button>
+    <button mat-button color="primary" (click)="close('Yes')" [disabled]="!file">YES</button>
+</mat-dialog-actions>

@@ -1,0 +1,73 @@
+<vex-secondary-toolbar current="Recommended for Lunch Circle">
+    <vex-breadcrumbs [crumbs]="['Recommended for Lunch Circle']" class="flex-auto"></vex-breadcrumbs>
+
+    <!-- <button class="ml-2" color="primary" mat-icon-button type="button">
+  <mat-icon [icIcon]="icMoreVert"></mat-icon>
+</button> -->
+</vex-secondary-toolbar>
+
+<vex-page-layout @stagger>
+    <vex-page-layout-content class="-mt-16">
+        <div class="card overflow-auto mt-16 pb-12">
+            <div class="bg-app-bar px-6 h-16 border-b sticky left-0" fxLayout="row" fxLayoutAlign="start center">
+                <span fxFlex></span>
+
+                <button [matMenuTriggerFor]="columnFilterMenu" class="ml-4" fxFlex="none" mat-icon-button matTooltip="Filter Columns" type="button">
+                    <mat-icon [icIcon]="icFilterList"></mat-icon>
+                </button>
+
+            </div>
+            <table @stagger [dataSource]="dataSource" class="w-full" mat-table matSort>
+                <ng-container *ngFor="let column of columns; trackBy: trackByProperty">
+                    <ng-container *ngIf="column.type === 'text'" [matColumnDef]="column.property">
+                        <th *matHeaderCellDef class="uppercase" mat-header-cell mat-sort-header> {{ column.label }}
+                        </th>
+                        <td *matCellDef="let row" [ngClass]="column.cssClasses" mat-cell>{{ row[column.property] }}
+                        </td>
+                    </ng-container>
+                </ng-container>
+
+
+                <!-- Action Column -->
+                <ng-container matColumnDef="actions">
+                    <th *matHeaderCellDef mat-header-cell mat-sort-header></th>
+                    <td *matCellDef="let row" class="w-10 text-secondary" mat-cell>
+                        <button (click)="$event.stopPropagation()" [matMenuTriggerData]="{ recommdedUser: row }" [matMenuTriggerFor]="actionsMenu" mat-icon-button type="button">
+                            <mat-icon [icIcon]="icMoreHoriz"></mat-icon>
+                        </button>
+                    </td>
+                </ng-container>
+                <tr *matHeaderRowDef="visibleColumns" mat-header-row></tr>
+                <tr *matRowDef="let row; columns: visibleColumns;" @fadeInUp class="hover:bg-hover trans-ease-out cursor-pointer" mat-row>
+
+                </tr>
+            </table>
+            <div *ngIf="!(dataSource.data.length > 0)" class="no-records">
+                No records found
+            </div>
+            <mat-paginator [pageSizeOptions]="pageSizeOptions" [pageSize]="pageSize" class="sticky left-0">
+            </mat-paginator>
+        </div>
+
+    </vex-page-layout-content>
+</vex-page-layout>
+<mat-menu #columnFilterMenu="matMenu" xPosition="before" yPosition="below">
+    <button (click)="toggleColumnVisibility(column, $event)" *ngFor="let column of columns" class="checkbox-item mat-menu-item">
+        <mat-checkbox (click)="$event.stopPropagation()" [(ngModel)]="column.visible" color="primary">
+            {{ column.label }}
+        </mat-checkbox>
+    </button>
+</mat-menu>
+
+<mat-menu #actionsMenu="matMenu" xPosition="before" yPosition="below">
+    <ng-template let-recommdedUser="recommdedUser" matMenuContent>
+        <button (click)="updateCategory(recommdedUser)" mat-menu-item>
+            <mat-icon [icIcon]="baselineBeenhere"></mat-icon>
+            <span>Approved</span>
+        </button>
+        <button (click)="declineUser(recommdedUser)" mat-menu-item>
+            <mat-icon [icIcon]="icDelete"></mat-icon>
+            <span>Decline</span>
+        </button>
+    </ng-template>
+</mat-menu>

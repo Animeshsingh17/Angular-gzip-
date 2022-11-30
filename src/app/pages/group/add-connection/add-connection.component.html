@@ -1,0 +1,42 @@
+<form (ngSubmit)="save()" [formGroup]="form">
+    <div fxLayout="row" fxLayoutAlign="start center" mat-dialog-title>
+
+
+        <h2 class="headline m-0" fxFlex="auto">
+            Add Connection</h2>
+
+        <button class="text-secondary" mat-dialog-close mat-icon-button type="button">
+            <mat-icon [icIcon]="icClose"></mat-icon>
+        </button>
+    </div>
+
+    <mat-divider class="-mx-6 text-border"></mat-divider>
+
+    <mat-dialog-content fxLayout="column">
+        <!-- <mat-form-field class="flex-auto">
+            <mat-label>User</mat-label>
+            <input matInput placeholder="Search" aria-label="State" [matAutocomplete]="auto" formControlName="toUser" required>
+            <mat-autocomplete md-input-minlength="2" md-input-maxlength="18" #auto="matAutocomplete" [displayWith]="displayFunction">
+                <mat-option *ngIf="isLoading" class="is-loading">Loading...</mat-option>
+                <ng-container *ngIf="!isLoading">
+                    <mat-option *ngFor="let user of userList " [value]="user">
+                        <div class="item">
+                            <img [src]="user.userPhotoURL?user.userPhotoURL:'assets/img/demo/user.png'" class="avatar">
+                            <span>  {{user.firstName}} {{user.lastName}}</span>
+                        </div>
+                    </mat-option>
+                </ng-container>
+            </mat-autocomplete>
+            <!-- <input formControlName="street" matInput required> -->
+
+        <!-- <mat-icon [icIcon]="icPerson" class="mr-3" matPrefix></mat-icon>
+        </mat-form-field>  -->
+        <chip-autocomplete fxFlex="auto" placeholder="Add Users" formControlName="toUser" [isImage]="true" imageDisplayWith="userPhotoUrl" [clientSideFilter]="false" [filteredOptions$]="filteredOptions$" [isOptionString]="false" removable="true" isChipAddFromInput="true"
+            required="true" displayWith="name" itemId="userId" isOptionCheckable="true" disabledSelected="true" (changeSearchkey)="onChangeSearchkey($event)">
+        </chip-autocomplete>
+    </mat-dialog-content>
+    <mat-dialog-actions align="end">
+        <button mat-button mat-dialog-close type="button">CANCEL</button>
+        <button [disabled]="!form.valid" color="primary" mat-button type="submit">CREATE</button>
+    </mat-dialog-actions>
+</form>

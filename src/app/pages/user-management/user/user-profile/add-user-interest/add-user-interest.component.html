@@ -1,0 +1,68 @@
+<form (ngSubmit)="save()" [formGroup]="form">
+    <div fxLayout="row" fxLayoutAlign="start center" mat-dialog-title>
+
+
+        <h2 class="headline m-0" fxFlex="auto">
+            Add Interest</h2>
+
+        <button class="text-secondary" mat-dialog-close mat-icon-button type="button">
+            <mat-icon [icIcon]="icClose"></mat-icon>
+        </button>
+    </div>
+
+    <mat-divider class="-mx-6 text-border"></mat-divider>
+
+    <mat-dialog-content fxLayout="column">
+        <mat-form-field class="flex-auto mt-5">
+            <mat-label>User Interest</mat-label>
+            <mat-select formControlName="interest" multiple>
+
+                <mat-optgroup *ngFor="let category of interestList" [label]="category.interestCategory">
+                    <mat-option *ngFor="let interest of category.listOfInterest" [value]="interest.interestId">{{interest.interestName | titlecase}}</mat-option>
+                </mat-optgroup>
+            </mat-select>
+
+            <mat-icon [icIcon]="icPerson" class="mr-3" matPrefix></mat-icon>
+        </mat-form-field>
+        <mat-form-field class="flex-auto mt-5 invisible">
+            <mat-label>User Interest</mat-label>
+            <mat-select multiple>
+
+                <mat-optgroup *ngFor="let category of interestList" [label]="category.interestCategory">
+                    <mat-option *ngFor="let interest of category.listOfInterest" [value]="interest.interestId">{{interest.interestName | titlecase}}</mat-option>
+                </mat-optgroup>
+            </mat-select>
+
+            <mat-icon [icIcon]="icPerson" class="mr-3" matPrefix></mat-icon>
+        </mat-form-field>
+        <mat-form-field class="flex-auto mt-5 invisible">
+            <mat-label>User Interest</mat-label>
+            <mat-select multiple>
+
+                <mat-optgroup *ngFor="let category of interestList" [label]="category.interestCategory">
+                    <mat-option *ngFor="let interest of category.listOfInterest" [value]="interest.interestId">{{interest.interestName | titlecase}}</mat-option>
+                </mat-optgroup>
+            </mat-select>
+
+            <mat-icon [icIcon]="icPerson" class="mr-3" matPrefix></mat-icon>
+        </mat-form-field>
+    </mat-dialog-content>
+    <mat-dialog-actions align="end">
+        <button mat-button mat-dialog-close type="button">CANCEL</button>
+        <button [disabled]="!form.valid" color="primary" mat-button type="submit">CREATE</button>
+    </mat-dialog-actions>
+</form>
+
+
+
+
+
+
+
+
+
+
+
+
+
+

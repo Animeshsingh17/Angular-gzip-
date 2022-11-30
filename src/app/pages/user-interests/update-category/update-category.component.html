@@ -1,0 +1,28 @@
+<form (ngSubmit)="save()" [formGroup]="form">
+    <div fxLayout="row" fxLayoutAlign="start center" mat-dialog-title>
+        <h2 *ngIf="isUpdateMode()" class="headline m-0" fxFlex="auto">Modify {{defaults.interestCategory}} category</h2>
+        <h2 *ngIf="isCreateMode()" class="headline m-0" fxFlex="auto">Add Category</h2>
+        <span fxFlex></span>
+        <button class="text-secondary" mat-dialog-close mat-icon-button type="button">
+          <mat-icon [icIcon]="icClose"></mat-icon>
+      </button>
+    </div>
+
+    <mat-divider class="-mx-6 text-border"></mat-divider>
+
+    <mat-dialog-content fxLayout="column">
+        <div class="flex flex-col sm:flex-row sm:mt-2">
+            <mat-form-field class="flex-auto">
+                <mat-label>Category</mat-label>
+                <input formControlName="categoryName" matInput>
+            </mat-form-field>
+        </div>
+
+    </mat-dialog-content>
+
+    <mat-dialog-actions align="end">
+        <button mat-button mat-dialog-close type="button">CANCEL</button>
+        <button *ngIf="isCreateMode()" [disabled]="!form.valid" color="primary" mat-button type="submit">CREATE</button>
+        <button *ngIf="isUpdateMode()" [disabled]="!form.valid" color="primary" mat-button type="submit">UPDATE</button>
+    </mat-dialog-actions>
+</form>

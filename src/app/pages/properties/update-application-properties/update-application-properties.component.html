@@ -1,0 +1,18 @@
+<form (ngSubmit)="save()" [formGroup]="form">
+    
+    <mat-dialog-content fxLayout="column">
+        <div class="flex flex-col sm:flex-row sm:mt-2">
+            <mat-form-field class="flex-auto">
+                <mat-label>Prop Value</mat-label>
+                <input type="text" formControlName="propValue" matInput required>
+            </mat-form-field>
+        </div>
+        <div class="flex flex-col sm:flex-row sm:mt-2">
+            <mat-checkbox formControlName="isActive" color="primary">Is Active</mat-checkbox>
+        </div>
+    </mat-dialog-content>
+    <mat-dialog-actions align="end">
+        <button mat-button mat-dialog-close type="button">CANCEL</button>
+        <button mat-button  [disabled]="!form.valid" color="primary" mat-button type="submit">Submit</button>
+    </mat-dialog-actions>
+</form>

@@ -1,0 +1,33 @@
+<form (ngSubmit)="SaveMemberSetting()" [formGroup]="form">
+    <div fxLayout="row" fxLayoutAlign="start center" mat-dialog-title>
+        <h2 class="headline m-0" fxFlex="auto">Membership of {{form.get('firstName').value | titlecase}} </h2>
+        <span fxFlex></span>
+        <button class="text-secondary" mat-dialog-close mat-icon-button type="button">
+            <mat-icon [icIcon]="icClose"></mat-icon>
+        </button>
+    </div>
+
+    <mat-divider class="-mx-6 text-border"></mat-divider>
+
+    <mat-dialog-content fxLayout="column">
+        <div class="flex flex-col sm:flex-row">
+            <mat-radio-group formControlName=permission class="flex flex-col sm:flex-row sm:mt-2 mb-3">
+                <mat-radio-button class="flex-auto" color="primary" value="Lunch Circle">Lunch Circle</mat-radio-button>
+                <mat-radio-button class="flex-auto ml-6" color="primary" value="Director Club">Director Club</mat-radio-button>
+            </mat-radio-group>
+        </div>
+
+        <div class="flex flex-col sm:flex-row">
+            <mat-checkbox *ngIf="form.get('permission').value=='Lunch Circle'" formControlName="isPromoted" color="primary" class="flex-auto">Is-Promoted</mat-checkbox>
+            <mat-checkbox *ngIf="form.get('permission').value=='Lunch Circle'" formControlName="isLCFlag" color="primary" class="flex-auto">Is visible to DC member</mat-checkbox>
+        </div>
+
+
+    </mat-dialog-content>
+
+    <mat-dialog-actions align="end">
+        <button mat-button mat-dialog-close type="button">CANCEL</button>
+        <button [disabled]="!form.valid" color="primary" mat-button type="submit">UPDATE</button>
+
+    </mat-dialog-actions>
+</form>

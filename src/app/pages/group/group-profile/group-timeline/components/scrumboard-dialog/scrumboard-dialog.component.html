@@ -1,0 +1,118 @@
+<form (ngSubmit)="save()" [formGroup]="form">
+  <button class="text-secondary float-right -mt-2 -ml-4" mat-dialog-close mat-icon-button type="button">
+    <mat-icon [icIcon]="icClose"></mat-icon>
+  </button>
+  
+
+      <div class="px-gutter py-4 flex items-center">
+        <img src="{{defaults.userPhotoCompressURL ? defaults.userPhotoCompressURL : defaults.userPhotoURL}}" alt="User Picture" class="flex-none avatar ltr:mr-4 rtl:ml-4"/>
+        <div class="flex-auto">
+          <p class="font-medium">{{ defaults.creatorName }}</p>
+          <p class="text-secondary font-medium text-xs">{{ defaults.creationDate }}</p>
+        </div>
+        
+        <div class="flex justify-items-end">
+          <div class="px-gutter py-2 flex flex-row cursor-pointer select-none items-center text-pink ltr:rounded-bl rtl:rounded-br relative hover:bg-pink-light trans-ease-out"
+               matRipple (click)="onLineButtonClick()">
+            <ic-icon [icon]="icFavorite" [inline]="true" size="20px"></ic-icon>
+            <p class="font-medium ltr:ml-2 rtl:mr-2">{{ defaults.groupPostLikeList.length}} Likes</p>
+          </div>
+        
+          <div class="px-gutter py-2 flex flex-row cursor-pointer select-none items-center text-primary ltr:rounded-bl rtl:rounded-br relative hover:bg-primary-light trans-ease-out"
+               matRipple (click)="onCommentButtonClick()">
+            <ic-icon [icon]="icComment" [inline]="true" size="20px"></ic-icon>
+            <p class="font-medium ltr:ml-2 rtl:mr-2">{{ defaults.groupPostCommentList.length  }} Comments</p>
+          </div>
+    </div>
+  
+</div>
+<p class="px-gutter pt-1 pb-4">{{defaults.post}}</p>
+  <ng-content></ng-content>
+  
+ 
+  <mat-divider></mat-divider>
+  <mat-dialog-content class="pb-6 content" *ngIf="isCommentsVisible">
+    <h2 class="body-2 m-0 pt-6 text-secondary" fxLayout="row" fxLayoutAlign="start center">
+      <ic-icon [icon]="icInsertComment" class="ltr:mr-4 rtl:ml-4" fxFlex="none" size="24px"></ic-icon>
+      <span fxFlex="auto">COMMENTS</span>
+    </h2>
+
+    <div class="ltr:ml-10 rtl:mr-10 mt-2">
+      <div *ngFor="let comment of defaults.groupPostCommentList" class="mt-4">
+        <div fxLayout="row" fxLayoutAlign="start center">
+          <ng-container *ngIf="comment.userPhotoCompressURL;else second">
+            <img class="avatar w-8 h-8 ltr:mr-3 rtl:ml-3" fxFlex="none" src="{{comment.userPhotoCompressURL}}">
+          </ng-container>
+          <ng-template #second>
+              <ng-container *ngIf="comment.userPhotoURL;else third">
+                <img class="avatar w-8 h-8 ltr:mr-3 rtl:ml-3" fxFlex="none" src="{{comment.userPhotoURL}}">  
+              </ng-container>
+          </ng-template>
+          <ng-template #third>
+            <img class="avatar w-8 h-8 ltr:mr-3 rtl:ml-3" fxFlex="none" src="assets/img/demo/user.png">
+          </ng-template>
+          <div>
+            <h4 class="body-2 m-0 leading-snug">{{ comment.creatorName }}</h4>
+            <h5 class="caption text-secondary m-0 leading-snug">{{ comment.creationDate  }}</h5>
+          </div>
+        </div>
+
+        <p class="m-0 mt-2 caption text-secondary">{{ comment.content }}</p>
+      </div>
+
+      <div class="mt-6" fxLayout="row" fxLayoutAlign="start center">
+      
+
+        <mat-form-field appearance="outline" class="vex-dense-form-field vex-flex-form-field" fxFlex="auto">
+          <input [formControl]="commentCtrl" matInput placeholder="Write a comment ...">
+          <button (click)="addComment()" class="-top-1" color="primary" mat-button matSuffix type="button">SEND</button>
+        </mat-form-field>
+      </div>
+    </div>
+  </mat-dialog-content>
+  <mat-dialog-content class="pb-6 content" *ngIf="!isCommentsVisible">
+    <h2 class="body-2 m-0 pt-6 text-secondary" fxLayout="row" fxLayoutAlign="start center">
+      <ic-icon [icon]="icInsertComment" class="ltr:mr-4 rtl:ml-4" fxFlex="none" size="24px"></ic-icon>
+      <span fxFlex="auto">LIKES</span>
+    </h2>
+
+    <div class="ltr:ml-10 rtl:mr-10 mt-2">
+      <div *ngFor="let comment of defaults.groupPostLikeList" class="mt-4">
+        <div fxLayout="row" fxLayoutAlign="start center">
+          <ng-container *ngIf="comment.userPhotoCompressURL;else second">
+            <img class="avatar w-8 h-8 ltr:mr-3 rtl:ml-3" fxFlex="none" src="{{comment.userPhotoCompressURL}}">
+          </ng-container>
+          <ng-template #second>
+              <ng-container *ngIf="comment.userPhotoURL;else third">
+                <img class="avatar w-8 h-8 ltr:mr-3 rtl:ml-3" fxFlex="none" src="{{comment.userPhotoURL}}">  
+              </ng-container>
+          </ng-template>
+          <ng-template #third>
+            <img class="avatar w-8 h-8 ltr:mr-3 rtl:ml-3" fxFlex="none" src="assets/img/demo/user.png">
+          </ng-template>
+          <div>
+            <h4 class="body-2 m-0 leading-snug">{{ comment.creatorName }}</h4>
+            <h5 class="caption text-secondary m-0 leading-snug">{{ comment.creationDate  }}</h5>
+          </div>
+        </div>
+
+        <p class="m-0 mt-2 caption text-secondary">{{ comment.content }}</p>
+      </div>
+
+      <div class="mt-6" fxLayout="row" fxLayoutAlign="start center">
+      
+
+        <mat-form-field appearance="outline" class="vex-dense-form-field vex-flex-form-field" fxFlex="auto">
+          <input [formControl]="commentCtrl" matInput placeholder="Write a comment ...">
+          <button (click)="addComment()" class="-top-1" color="primary" mat-button matSuffix type="button">SEND</button>
+        </mat-form-field>
+      </div>
+    </div>
+  </mat-dialog-content>
+  <!-- <mat-dialog-actions align="end">
+    <button mat-button mat-dialog-close type="button">CANCEL</button>
+    <button color="primary" mat-raised-button type="submit">SAVE</button>
+  </mat-dialog-actions> -->
+</form>
+
+

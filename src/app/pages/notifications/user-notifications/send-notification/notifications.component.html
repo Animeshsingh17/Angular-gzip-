@@ -1,0 +1,23 @@
+<vex-page-layout @stagger>
+    <vex-page-layout-content class="-mt-16">
+        <div class="card overflow-auto mt-16 pb-12">
+          <div class="px-6 py-4 border-b" fxLayout="row" fxLayoutAlign="start center">
+            <h2 class="title m-0">Send User Notifications</h2>
+          </div>
+          <div class="px-6 py-4" fxLayout="column">
+            <mat-form-field>
+              <mat-label>Title</mat-label>
+              <input matInput required [(ngModel)]="title">
+            </mat-form-field>
+            <mat-form-field>
+              <mat-label>Body</mat-label>
+              <textarea matInput required [(ngModel)]="body" rows="6"></textarea>
+            </mat-form-field>
+            <!-- <button color="primary" mat-raised-button type="button" (click)="sendNotification()" [disabled]="!body || !title">SUBMIT</button> -->
+          </div>
+          <div class="px-6 py-4 w-1/2 mx-auto" fxLayout="column">
+            <button color="primary" mat-raised-button type="button" (click)="sendNotification()" [disabled]="!body || !title">SUBMIT</button>
+          </div>
+        </div>
+    </vex-page-layout-content>
+</vex-page-layout>
