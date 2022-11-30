@@ -2,7 +2,6 @@
     "name": "thelunchcircle",
     "version": "11.0.0",
     "scripts": {
-        "build-compress": "ng build && gzipper c ./dist --include js,css,html --output-file-format [filename].[ext] ./dist-compressed/",
         "ng": "ng",
         "start": "ng serve",
         "watch": "ng build --watch --configuration development",
